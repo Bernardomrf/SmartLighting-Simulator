@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" href="/static/images/favicon.ico">
+		<title>SmartLighting Simulator</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/bootstrap/css/bootstrap-horizon.css" rel="stylesheet" >
+		<link href="/static/css/style.css" rel="stylesheet" >
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-id="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand">Simulator</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<!-- <ul class="nav navbar-nav"></ul> -->
+				</div>
+			</div>
+		</nav>
+		<div class="container plant-container center-block">
+			<canvas id="plantCanvas" class="plant-canvas"></canvas>
+			<img id="itimg" src="/static/images/smallerIT2off.png" alt="IT2 Plant" class="img-responsive plant-image" usemap="#itmap"/>
+			<map name="itmap" class="plant-map">
+				<area shape="rect" coords="48,95,310,259" class="room" title="0.9.1" data-toggle="modal" data-target="#0_9_1" />
+				<area shape="rect" coords="318,95,442,194" class="room" title="0.13.1" data-toggle="modal" data-target="#0_13_1" />
+				<area shape="rect" coords="454,95,575,262" class="room" title="0.1.1" data-toggle="modal" data-target="#0_1_1" />
+				<area shape="rect" coords="589,94,712,260" class="room" title="0.1.2" data-toggle="modal" data-target="#0_1_2" />
+				<area shape="rect" coords="723,93,845,260" class="room" title="0.1.3" data-toggle="modal" data-target="#0_1_3" />
+				<area shape="rect" coords="859,93,982,259" class="room" title="0.1.4" data-toggle="modal" data-target="#0_1_4" />
+				<area shape="rect" coords="992,95,1115,259" class="room" title="0.1.5" data-toggle="modal" data-target="#0_1_5" />
+				<area shape="rect" coords="1128,96,1250,258" class="room" title="0.1.6" data-toggle="modal" data-target="#0_1_6" />
+				<area shape="rect" coords="1262,95,1383,260" class="room" title="0.1.7" data-toggle="modal" data-target="#0_1_7" />
+				<area shape="rect" coords="1396,95,1578,259" class="room" title="0.5.1" data-toggle="modal" data-target="#0_5_1" />
+				<area shape="rect" coords="1395,338,1583,462" class="room" title="0.1.8" data-toggle="modal" data-target="#0_1_8" />
+				<area shape="rect" coords="1396,475,1581,594" class="room" title="0.1.9" data-toggle="modal" data-target="#0_1_9" />
+				<area shape="rect" coords="1397,610,1581,734" class="room" title="0.1.10" data-toggle="modal" data-target="#0_1_10" />
+				<area shape="rect" coords="1396,746,1583,867" class="room" title="0.1.11" data-toggle="modal" data-target="#0_1_11" />
+				<area shape="rect" coords="1126,338,1320,463" class="room" title="0.1.12" data-toggle="modal" data-target="#0_1_12" />
+				<area shape="rect" coords="1127,473,1316,593" class="room" title="0.1.13" data-toggle="modal" data-target="#0_1_13" />
+				<area shape="rect" coords="1126,608,1317,728" class="room" title="0.1.14" data-toggle="modal" data-target="#0_1_14" />
+				<area shape="rect" coords="588,742,710,933" class="room" title="0.1.15" data-toggle="modal" data-target="#0_1_15" />
+				<area shape="rect" coords="722,743,846,933" class="room" title="0.1.16" data-toggle="modal" data-target="#0_1_16" />
+				<area shape="rect" coords="857,743,980,933" class="room" title="0.1.17" data-toggle="modal" data-target="#0_1_17" />
+				<area shape="rect" coords="993,742,1117,932" class="room" title="0.1.18" data-toggle="modal" data-target="#0_1_18" />
+				<area shape="rect" coords="588,1011,779,1270" class="room" title="0.5.2" data-toggle="modal" data-target="#0_5_2" />
+				<area shape="rect" coords="791,1012,980,1268" class="room" title="0.6.1" data-toggle="modal" data-target="#0_6_1" />
+				<area shape="rect" coords="993,1013,1117,1270" class="room" title="0.6.2" data-toggle="modal" data-target="#0_6_2" />
+				<area shape="rect" coords="1128,1146,1249,1270" class="room" title="0.6.5" data-toggle="modal" data-target="#0_6_5" />
+				<area shape="rect" coords="1192,1012,1250,1134" class="room" title="0.6.4" data-toggle="modal" data-target="#0_6_5" />
+				<area shape="rect" coords="1124,1013,1181,1135" class="room" title="0.6.3" data-toggle="modal" data-target="#0_6_5" />
+				<area shape="rect" coords="1262,1012,1385,1269" class="room" title="0.6.6" data-toggle="modal" data-target="#0_6_6" />
+				<area shape="rect" coords="1395,1109,1581,1272" class="room" title="0.5.3" data-toggle="modal" data-target="#0_5_3" />
+				<area shape="rect" coords="1395,1011,1581,1100" class="room" title="0.10.1" data-toggle="modal" data-target="#0_10_1" />
+				<area shape="rect" coords="1666,877,1924,1001" class="room" title="0.11.1" data-toggle="modal" data-target="#0_11_1" />
+				<area shape="rect" coords="1665,1013,1924,1135" class="room" title="0.7.1" data-toggle="modal" data-target="#0_7_1" />
+				<area shape="rect" coords="1666,1146,1924,1270" class="room" title="0.12.1" data-toggle="modal" data-target="#0_12_1" />
+				<area shape="rect" coords="1665,1282,1925,1373" class="room" title="0.12.2" data-toggle="modal" data-target="#0_12_2" />
+				<area shape="rect" coords="1665,1384,1925,1537" class="room" title="0.12.3" data-toggle="modal" data-target="#0_12_3" />
+				<area shape="rect" coords="1666,1551,1924,1616" class="room" title="0.12.4" data-toggle="modal" data-target="#0_12_4" />
+				<area shape="rect" coords="1666,1628,1924,1944" class="room" title="0.12.5" data-toggle="modal" data-target="#0_12_5" />
+				<area shape="rect" coords="1665,1954,1874,2079" class="room" title="0.13.11" data-toggle="modal" data-target="#0_13_11" />
+				<area shape="rect" coords="1589,1617,1656,2079" class="room" title="0.13.10" data-toggle="modal" data-target="#0_13_10" />
+				<area shape="rect" coords="1395,1753,1585,1875" class="room" title="0.4.1" data-toggle="modal" data-target="#0_4_1" />
+				<area shape="rect" coords="1395,1887,1581,2078" class="room" title="0.4.2" data-toggle="modal" data-target="#0_4_2" />
+				<area shape="rect" coords="1054,1624,1186,1744" class="room" title="0.1.20" data-toggle="modal" data-target="#0_1_20" />
+				<area shape="poly" coords="1384,1626,1385,2043,1250,2041,1250,2078,1126,2078,1124,1752,1194,1752,1193,1625" class="room" title="0.3.5" data-toggle="modal" data-target="#0_3_5" />
+				<area shape="poly" coords="856,1624,1046,1624,1046,1753,1116,1752,1115,2078,856,2079" class="room" title="0.3.4" data-toggle="modal" data-target="#0_3_4" />
+				<area shape="rect" coords="587,1626,846,2079" class="room" title="0.3.3" data-toggle="modal" data-target="#0_3_3" />
+				<area shape="rect" coords="248,1626,378,1744" class="room" title="0.1.19" data-toggle="modal" data-target="#0_1_19" />
+				<area shape="poly" coords="388,1626,579,1626,577,2078,318,2078,317,1752,386,1751" class="room" title="0.3.2" data-toggle="modal" data-target="#0_3_2" />
+				<area shape="poly" coords="49,1625,49,2079,306,2078,307,1752,237,1753,239,1626" class="room" title="0.3.1" data-toggle="modal" data-target="#0_3_1" />
+				<area shape="rect" coords="100,1280,509,1540" class="room" title="0.2.4" data-toggle="modal" data-target="#0_2_4" />
+				<area shape="rect" coords="100,1012,514,1270" class="room" title="0.2.3" data-toggle="modal" data-target="#0_2_3" />
+				<area shape="rect" coords="100,743,509,1001" class="room" title="0.2.2" data-toggle="modal" data-target="#0_2_2" />
+				<area shape="rect" coords="100,472,514,730" class="room" title="0.2.1" data-toggle="modal" data-target="#0_2_1" />
+				<area shape="rect" coords="47,271,109,463" class="room" title="0.14.2" data-toggle="modal" data-target="#0_14_1" />
+				<area shape="rect" coords="114,390,227,461" class="room" title="0.14.3" data-toggle="modal" data-target="#0_14_1" />
+				<area shape="poly" coords="113,271,308,271,309,315,191,317,190,386,114,387" class="room" title="0.14.1" data-toggle="modal" data-target="#0_14_1" />
+				<area shape="poly" coords="307,319,308,464,232,463,231,385,193,386,193,320" class="room" title="0.14.4" data-toggle="modal" data-target="#0_14_1" />
+				<area shape="poly" coords="1394,1626,1458,1625,1459,1684,1485,1683,1484,1744,1396,1742" class="room" title="0.14.10" data-toggle="modal" data-target="#0_14_10" />
+				<area shape="poly" coords="1491,1683,1520,1683,1520,1627,1580,1626,1581,1743,1491,1742" class="room" title="0.14.11" data-toggle="modal" data-target="#0_14_10" />
+				<area shape="rect" coords="1212,805,1317,867" class="room" title="0.14.5" data-toggle="modal" data-target="#0_14_5" />
+				<area shape="rect" coords="1126,742,1317,801" class="room" title="0.14.6" data-toggle="modal" data-target="#0_14_5" />
+				<area shape="rect" coords="1126,807,1207,899" class="room" title="0.14.7" data-toggle="modal" data-target="#0_14_5" />
+				<area shape="poly" coords="1126,903,1212,903,1213,872,1316,873,1317,932,1127,934" class="room" title="0.14.8" data-toggle="modal" data-target="#0_14_5" />
+				<area shape="rect" coords="1590,1225,1653,1549" class="room" title="0.13.7" data-toggle="modal" data-target="#0_13_7" />
+				<area shape="rect" coords="97,1550,1651,1617" class="room" title="0.13.9" data-toggle="modal" data-target="#0_13_9" />
+				<area shape="rect" coords="518,1144,578,1549" class="room" title="0.13.8" data-toggle="modal" data-target="#0_13_8" />
+				<area shape="rect" coords="518,468,578,1137" class="room" title="0.13.3" data-toggle="modal" data-target="#0_13_3" />
+				<area shape="poly" coords="318,202,441,203,442,268,576,271,577,463,319,463" class="room" title="0.13.2" data-toggle="modal" data-target="#0_13_2" />
+				<area shape="rect" coords="580,271,1580,328" class="room" title="0.13.4" data-toggle="modal" data-target="#0_13_4" />
+				<area shape="rect" coords="1326,331,1387,875" class="room" title="0.13.5" data-toggle="modal" data-target="#0_13_5" />
+				<area shape="poly" coords="582,943,1327,944,1326,881,1653,880,1655,1216,1593,1217,1590,1003,581,1001" class="room" title="0.13.6" data-toggle="modal" data-target="#0_13_6" />
+				<area shape="poly" coords="1937,1625,1977,1626,1977,2076,1884,2079,1882,1954,1938,1953" class="room" title="0.13.12" data-toggle="modal" data-target="#0_13_12" />
+				<area shape="rect" coords="99,121,149,168" id="light1"  data-type="light" />
+				<area shape="rect" coords="211,121,259,168" id="light2"  data-type="light" />
+				<area shape="rect" coords="97,193,147,231" id="light3"  data-type="light" />
+				<area shape="rect" coords="215,193,255,234" id="light4"  data-type="light" />
+				<area shape="rect" coords="360,128,401,166" id="light_c0"  data-type="light" />
+				<area shape="rect" coords="495,129,530,163" id="light6"  data-type="light" />
+				<area shape="rect" coords="496,189,537,230" id="light7"  data-type="light" />
+				<area shape="rect" coords="629,115,671,163" id="light8"  data-type="light" />
+				<area shape="rect" coords="630,191,668,227" id="light9"  data-type="light" />
+				<area shape="rect" coords="768,123,805,164" id="light10"  data-type="light" />
+				<area shape="rect" coords="764,193,797,233" id="light11"  data-type="light" />
+				<area shape="rect" coords="895,123,939,171" id="light12"  data-type="light" />
+				<area shape="rect" coords="902,191,939,229" id="light13"  data-type="light" />
+				<area shape="rect" coords="1030,125,1074,161" id="light14"  data-type="light" />
+				<area shape="rect" coords="1039,196,1074,230" id="light15"  data-type="light" />
+				<area shape="rect" coords="1170,130,1205,164" id="light16"  data-type="light" />
+				<area shape="rect" coords="1170,193,1213,231" id="light17"  data-type="light" />
+				<area shape="rect" coords="1293,123,1345,162" id="light18"  data-type="light" />
+				<area shape="rect" coords="1306,194,1338,228" id="light19"  data-type="light" />
+				<area shape="rect" coords="1429,120,1460,154" id="light20"  data-type="light" />
+				<area shape="rect" coords="1425,205,1462,241" id="light22"  data-type="light" />
+				<area shape="rect" coords="1513,120,1551,157" id="light21"  data-type="light" />
+				<area shape="rect" coords="1514,208,1552,238" id="light23"  data-type="light" />
+				<area shape="rect" coords="1421,383,1460,420" id="light24"  data-type="light" />
+				<area shape="rect" coords="1503,379,1554,424" id="light25"  data-type="light" />
+				<area shape="rect" coords="1427,505,1463,550" id="light26"  data-type="light" />
+				<area shape="rect" coords="1516,500,1552,554" id="light27"  data-type="light" />
+				<area shape="rect" coords="1425,647,1460,683" id="light28"  data-type="light" />
+				<area shape="rect" coords="1513,643,1552,683" id="light29"  data-type="light" />
+				<area shape="rect" coords="1423,770,1461,817" id="light30"  data-type="light" />
+				<area shape="rect" coords="1516,780,1552,815" id="light31"  data-type="light" />
+				<area shape="rect" coords="1161,382,1194,422" id="light32"  data-type="light" />
+				<area shape="rect" coords="1247,384,1284,417" id="light33"  data-type="light" />
+				<area shape="rect" coords="1154,521,1195,551" id="light34"  data-type="light" />
+				<area shape="rect" coords="1248,519,1292,553" id="light35"  data-type="light" />
+				<area shape="rect" coords="1158,654,1194,688" id="light36"  data-type="light" />
+				<area shape="rect" coords="1251,653,1283,688" id="light37"  data-type="light" />
+				<area shape="rect" coords="631,772,667,811" id="light38"  data-type="light" />
+				<area shape="rect" coords="632,864,669,901" id="light39"  data-type="light" />
+				<area shape="rect" coords="768,775,804,807" id="light40"  data-type="light" />
+				<area shape="rect" coords="763,867,805,903" id="light41"  data-type="light" />
+				<area shape="rect" coords="899,773,940,817" id="light42"  data-type="light" />
+				<area shape="rect" coords="905,866,940,899" id="light43"  data-type="light" />
+				<area shape="rect" coords="1037,771,1070,812" id="light44"  data-type="light" />
+				<area shape="rect" coords="1042,866,1072,901" id="light45"  data-type="light" />
+				<area shape="rect" coords="619,1053,661,1089" id="light46"  data-type="light" />
+				<area shape="rect" coords="706,1055,753,1093" id="light47"  data-type="light" />
+				<area shape="rect" coords="613,1187,659,1226" id="light48"  data-type="light" />
+				<area shape="rect" coords="711,1191,748,1230" id="light49"  data-type="light" />
+				<area shape="rect" coords="820,1055,862,1093" id="light50"  data-type="light" />
+				<area shape="rect" coords="911,1056,948,1095" id="light51"  data-type="light" />
+				<area shape="rect" coords="822,1187,858,1222" id="light52"  data-type="light" />
+				<area shape="rect" coords="916,1193,951,1227" id="light53"  data-type="light" />
+				<area shape="rect" coords="1170,1193,1207,1229" id="light54"  data-type="light" />
+				<area shape="rect" coords="1424,1134,1463,1178" id="light55"  data-type="light" />
+				<area shape="rect" coords="1513,1136,1550,1172" id="light56"  data-type="light" />
+				<area shape="rect" coords="1422,1206,1467,1239" id="light57"  data-type="light" />
+				<area shape="rect" coords="1513,1207,1556,1240" id="light58"  data-type="light" />
+				<area shape="rect" coords="153,517,194,569" id="light59"  data-type="light" />
+				<area shape="rect" coords="285,528,322,566" id="light60"  data-type="light" />
+				<area shape="rect" coords="419,527,452,562" id="light61"  data-type="light" />
+				<area shape="rect" coords="147,640,189,680" id="light62"  data-type="light" />
+				<area shape="rect" coords="278,639,324,679" id="light63"  data-type="light" />
+				<area shape="rect" coords="417,636,461,677" id="light64"  data-type="light" />
+				<area shape="rect" coords="147,800,188,828" id="light65"  data-type="light" />
+				<area shape="rect" coords="285,802,322,832" id="light66"  data-type="light" />
+				<area shape="rect" coords="422,799,457,839" id="light67"  data-type="light" />
+				<area shape="rect" coords="154,914,189,944" id="light68"  data-type="light" />
+				<area shape="rect" coords="285,906,336,954" id="light69"  data-type="light" />
+				<area shape="rect" coords="421,908,458,948" id="light70"  data-type="light" />
+				<area shape="rect" coords="149,1068,190,1106" id="light71"  data-type="light" />
+				<area shape="rect" coords="277,1064,324,1104" id="light72"  data-type="light" />
+				<area shape="rect" coords="419,1063,459,1109" id="light73"  data-type="light" />
+				<area shape="rect" coords="149,1172,184,1215" id="light74"  data-type="light" />
+				<area shape="rect" coords="288,1180,326,1212" id="light75"  data-type="light" />
+				<area shape="rect" coords="422,1174,456,1215" id="light76"  data-type="light" />
+				<area shape="rect" coords="153,1331,186,1374" id="light77"  data-type="light" />
+				<area shape="rect" coords="289,1335,325,1371" id="light78"  data-type="light" />
+				<area shape="rect" coords="414,1336,475,1374" id="light79"  data-type="light" />
+				<area shape="rect" coords="151,1452,185,1480" id="light80"  data-type="light" />
+				<area shape="rect" coords="287,1452,322,1480" id="light81"  data-type="light" />
+				<area shape="rect" coords="419,1446,460,1495" id="light82"  data-type="light" />
+				<area shape="rect" coords="97,1675,156,1719" id="light83"  data-type="light" />
+				<area shape="rect" coords="108,1835,140,1867" id="light84"  data-type="light" />
+				<area shape="rect" coords="102,1992,139,2034" id="light85"  data-type="light" />
+				<area shape="rect" coords="220,1836,249,1869" id="light86"  data-type="light" />
+				<area shape="rect" coords="216,1990,255,2025" id="light87"  data-type="light" />
+				<area shape="rect" coords="467,1678,499,1712" id="light88"  data-type="light" />
+				<area shape="rect" coords="352,1836,386,1869" id="light89"  data-type="light" />
+				<area shape="rect" coords="351,1992,387,2026" id="light90"  data-type="light" />
+				<area shape="rect" coords="465,1837,500,1868" id="light91"  data-type="light" />
+				<area shape="rect" coords="462,1987,502,2030" id="light92"  data-type="light" />
+				<area shape="rect" coords="644,1676,684,1711" id="light93"  data-type="light" />
+				<area shape="rect" coords="647,1834,678,1870" id="light94"  data-type="light" />
+				<area shape="rect" coords="646,1987,679,2030" id="light95"  data-type="light" />
+				<area shape="rect" coords="758,1678,791,1716" id="light96"  data-type="light" />
+				<area shape="rect" coords="759,1835,789,1867" id="light97"  data-type="light" />
+				<area shape="rect" coords="754,1989,793,2033" id="light98"  data-type="light" />
+				<area shape="rect" coords="914,1678,945,1717" id="light99"  data-type="light" />
+				<area shape="rect" coords="912,1825,950,1877" id="light100"  data-type="light" />
+				<area shape="rect" coords="911,1992,947,2031" id="light101"  data-type="light" />
+				<area shape="rect" coords="1024,1835,1058,1874" id="light102"  data-type="light" />
+				<area shape="rect" coords="1025,1984,1062,2030" id="light103"  data-type="light" />
+				<area shape="rect" coords="1291,1701,1333,1735" id="light104"  data-type="light" />
+				<area shape="rect" coords="1177,1831,1223,1873" id="light105"  data-type="light" />
+				<area shape="rect" coords="1184,1966,1217,2004" id="light106"  data-type="light" />
+				<area shape="rect" coords="1292,1836,1332,1871" id="light107"  data-type="light" />
+				<area shape="rect" coords="1297,1968,1333,2007" id="light108"  data-type="light" />
+				<area shape="rect" coords="1013,1048,1096,1072" id="light_s1"  data-type="light" />
+				<area shape="rect" coords="1015,1116,1098,1144" id="light_s2"  data-type="light" />
+				<area shape="rect" coords="1014,1208,1093,1243" id="light_s3"  data-type="light" />
+				<area shape="rect" coords="1688,1654,1782,1681" id="light_s4"  data-type="light" />
+				<area shape="rect" coords="1691,1780,1776,1811" id="light_s5"  data-type="light" />
+				<area shape="rect" coords="1693,1897,1778,1925" id="light_s6"  data-type="light" />
+				<area shape="rect" coords="1844,1640,1871,1729" id="light_s7"  data-type="light" />
+				<area shape="rect" coords="1815,1783,1903,1803" id="light_s8"  data-type="light" />
+				<area shape="rect" coords="1820,1897,1900,1923" id="light_s9"  data-type="light" />
+				<area shape="rect" coords="61,285,78,304" id="light_b1"  data-type="light" />
+				<area shape="rect" coords="66,350,91,371" id="light_b2"  data-type="light" />
+				<area shape="rect" coords="54,425,71,445" id="light_b3"  data-type="light" />
+				<area shape="rect" coords="84,424,109,448" id="light_b4"  data-type="light" />
+				<area shape="rect" coords="135,314,160,336" id="light_b5"  data-type="light" />
+				<area shape="rect" coords="126,410,152,438" id="light_b6"  data-type="light" />
+				<area shape="rect" coords="175,412,198,433" id="light_b7"  data-type="light" />
+				<area shape="rect" coords="200,352,226,373" id="light_b8"  data-type="light" />
+				<area shape="rect" coords="229,280,259,306" id="light_b9"  data-type="light" />
+				<area shape="rect" coords="258,350,279,375" id="light_b10"  data-type="light" />
+				<area shape="rect" coords="241,420,265,450" id="light_b11"  data-type="light" />
+				<area shape="rect" coords="284,422,306,449" id="light_b12"  data-type="light" />
+				<area shape="rect" coords="1145,743,1166,763" id="light_b13"  data-type="light" />
+				<area shape="rect" coords="1198,760,1229,777" id="light_b14"  data-type="light" />
+				<area shape="rect" coords="1269,759,1296,780" id="light_b15"  data-type="light" />
+				<area shape="rect" coords="1145,774,1166,794" id="light_b16"  data-type="light" />
+				<area shape="rect" coords="1146,816,1176,837" id="light_b17"  data-type="light" />
+				<area shape="rect" coords="1249,821,1274,849" id="light_b18"  data-type="light" />
+				<area shape="rect" coords="1149,866,1177,886" id="light_b19"  data-type="light" />
+				<area shape="rect" coords="1142,905,1160,931" id="light_b20"  data-type="light" />
+				<area shape="rect" coords="1221,891,1243,908" id="light_b21"  data-type="light" />
+				<area shape="rect" coords="1273,879,1296,899" id="light_b22"  data-type="light" />
+				<area shape="rect" coords="1276,908,1296,927" id="light_b23"  data-type="light" />
+				<area shape="rect" coords="1409,1637,1428,1657" id="light_b24"  data-type="light" />
+				<area shape="rect" coords="1409,1672,1431,1698" id="light_b25"  data-type="light" />
+				<area shape="rect" coords="1405,1712,1427,1733" id="light_b26"  data-type="light" />
+				<area shape="rect" coords="1453,1684,1476,1706" id="light_b27"  data-type="light" />
+				<area shape="rect" coords="1448,1716,1477,1739" id="light_b28"  data-type="light" />
+				<area shape="rect" coords="1497,1684,1519,1708" id="light_b29"  data-type="light" />
+				<area shape="rect" coords="1497,1720,1519,1740" id="light_b30"  data-type="light" />
+				<area shape="rect" coords="1547,1634,1564,1656" id="light_b31"  data-type="light" />
+				<area shape="rect" coords="1550,1678,1564,1694" id="light_b32"  data-type="light" />
+				<area shape="rect" coords="1547,1711,1566,1737" id="light_b33"  data-type="light" />
+				<area shape="rect" coords="376,282,409,321" id="light_c1"  data-type="light" />
+				<area shape="rect" coords="482,284,520,313" id="light_c2"  data-type="light" />
+				<area shape="rect" coords="370,387,414,431" id="light_c3"  data-type="light" />
+				<area shape="rect" coords="480,389,520,428" id="light_c4"  data-type="light" />
+				<area shape="rect" coords="658,283,705,316" id="light_c5"  data-type="light" />
+				<area shape="rect" coords="818,279,859,321" id="light_c6"  data-type="light" />
+				<area shape="rect" coords="976,281,1015,314" id="light_c7"  data-type="light" />
+				<area shape="rect" coords="1113,282,1147,315" id="light_c8"  data-type="light" />
+				<area shape="rect" coords="1245,279,1289,316" id="light_c9"  data-type="light" />
+				<area shape="rect" coords="1387,279,1418,316" id="light_c10"  data-type="light" />
+				<area shape="rect" coords="1516,276,1556,316" id="light_c11"  data-type="light" />
+				<area shape="rect" coords="530,504,568,545" id="light_c12"  data-type="light" />
+				<area shape="rect" coords="528,662,566,700" id="light_c13"  data-type="light" />
+				<area shape="rect" coords="529,820,563,856" id="light_c14"  data-type="light" />
+				<area shape="rect" coords="529,1019,568,1058" id="light_c15"  data-type="light" />
+				<area shape="rect" coords="1337,436,1372,474" id="light_c16"  data-type="light" />
+				<area shape="rect" coords="1340,595,1376,635" id="light_c17"  data-type="light" />
+				<area shape="rect" coords="1334,746,1375,795" id="light_c18"  data-type="light" />
+				<area shape="rect" coords="1339,907,1374,945" id="light_c19"  data-type="light" />
+				<area shape="rect" coords="629,952,678,992" id="light_c20"  data-type="light" />
+				<area shape="rect" coords="814,953,859,998" id="light_c21"  data-type="light" />
+				<area shape="rect" coords="995,952,1039,988" id="light_c22"  data-type="light" />
+				<area shape="rect" coords="1184,956,1214,993" id="light_c23"  data-type="light" />
+				<area shape="rect" coords="1473,912,1511,942" id="light_c24"  data-type="light" />
+				<area shape="rect" coords="1610,911,1639,944" id="light_c25"  data-type="light" />
+				<area shape="rect" coords="1607,1025,1645,1057" id="light_c26"  data-type="light" />
+				<area shape="rect" coords="1132,1049,1175,1090" id="light_c27"  data-type="light" />
+				<area shape="rect" coords="1202,1055,1237,1087" id="light_c28"  data-type="light" />
+				<area shape="rect" coords="1306,1031,1341,1075" id="light_c29"  data-type="light" />
+				<area shape="rect" coords="1305,1121,1339,1161" id="light_c30"  data-type="light" />
+				<area shape="rect" coords="1308,1209,1339,1248" id="light_c31"  data-type="light" />
+				<area shape="rect" coords="1470,1036,1507,1073" id="light_c32"  data-type="light" />
+				<area shape="rect" coords="1686,917,1722,956" id="light_c33"  data-type="light" />
+				<area shape="rect" coords="1774,917,1811,958" id="light_c34"  data-type="light" />
+				<area shape="rect" coords="1865,920,1900,954" id="light_c35"  data-type="light" />
+				<area shape="rect" coords="1685,1053,1728,1088" id="light_c36"  data-type="light" />
+				<area shape="rect" coords="1776,1053,1812,1091" id="light_c37"  data-type="light" />
+				<area shape="rect" coords="1864,1044,1908,1098" id="light_c38"  data-type="light" />
+				<area shape="rect" coords="1685,1187,1726,1228" id="light_c39"  data-type="light" />
+				<area shape="rect" coords="1775,1181,1818,1222" id="light_c40"  data-type="light" />
+				<area shape="rect" coords="1869,1189,1900,1225" id="light_c41"  data-type="light" />
+				<area shape="rect" coords="1709,1308,1746,1348" id="light_c42"  data-type="light" />
+				<area shape="rect" coords="1843,1309,1879,1344" id="light_c43"  data-type="light" />
+				<area shape="rect" coords="1704,1407,1741,1445" id="light_c44"  data-type="light" />
+				<area shape="rect" coords="1841,1407,1880,1448" id="light_c45"  data-type="light" />
+				<area shape="rect" coords="1701,1474,1760,1520" id="light_c46"  data-type="light" />
+				<area shape="rect" coords="1842,1474,1880,1511" id="light_c47"  data-type="light" />
+				<area shape="rect" coords="1605,1291,1639,1338" id="light_c48"  data-type="light" />
+				<area shape="rect" coords="1604,1423,1638,1468" id="light_c49"  data-type="light" />
+				<area shape="rect" coords="1708,1564,1743,1600" id="light_c50"  data-type="light" />
+				<area shape="rect" coords="1842,1563,1879,1600" id="light_c51"  data-type="light" />
+				<area shape="rect" coords="1510,1562,1559,1602" id="light_c52"  data-type="light" />
+				<area shape="rect" coords="1377,1565,1420,1599" id="light_c53"  data-type="light" />
+				<area shape="rect" coords="1241,1567,1287,1596" id="light_c54"  data-type="light" />
+				<area shape="rect" coords="1113,1566,1151,1598" id="light_c55"  data-type="light" />
+				<area shape="rect" coords="928,1562,970,1603" id="light_c56"  data-type="light" />
+				<area shape="rect" coords="796,1563,834,1602" id="light_c57"  data-type="light" />
+				<area shape="rect" coords="659,1560,698,1603" id="light_c58"  data-type="light" />
+				<area shape="rect" coords="462,1560,499,1608" id="light_c59"  data-type="light" />
+				<area shape="rect" coords="306,1566,338,1601" id="light_c60"  data-type="light" />
+				<area shape="rect" coords="140,1564,184,1602" id="light_c61"  data-type="light" />
+				<area shape="rect" coords="534,1261,564,1314" id="light_c62"  data-type="light" />
+				<area shape="rect" coords="525,1442,566,1493" id="light_c63"  data-type="light" />
+				<area shape="rect" coords="296,1668,329,1704" id="light_c64"  data-type="light" />
+				<area shape="rect" coords="1098,1664,1146,1701" id="light_c65"  data-type="light" />
+				<area shape="rect" coords="1605,1631,1640,1673" id="light_c66"  data-type="light" />
+				<area shape="rect" coords="1602,1801,1636,1856" id="light_c67"  data-type="light" />
+				<area shape="rect" coords="1599,1984,1637,2036" id="light_c68"  data-type="light" />
+				<area shape="rect" coords="1425,1796,1456,1829" id="light_c69"  data-type="light" />
+				<area shape="rect" coords="1517,1793,1548,1829" id="light_c70"  data-type="light" />
+				<area shape="rect" coords="1417,1919,1458,1955" id="light_c71"  data-type="light" />
+				<area shape="rect" coords="1506,1922,1550,1949" id="light_c72"  data-type="light" />
+				<area shape="rect" coords="1421,2013,1462,2045" id="light_c73"  data-type="light" />
+				<area shape="rect" coords="1517,2013,1550,2041" id="light_c74"  data-type="light" />
+				<area shape="rect" coords="1748,1996,1794,2027" id="light_c75"  data-type="light" />
+				<area shape="rect" coords="1937,1786,1970,1840" id="light_c76"  data-type="light" />
+			</map>
+		</div>
+		{% include 'modals.html' %}
+		<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/static/js/imageMapResizer.min.js"></script>
+		<script src="/static/js/maps.js"></script>
+		<script src="/static/js/eventHandler.js"></script>
+	</body>
+</html>

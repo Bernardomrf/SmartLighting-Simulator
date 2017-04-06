@@ -1,0 +1,5 @@
+# Instalable with pip
+paho-mqtt
+gevent
+flask
+ujson
