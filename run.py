@@ -114,7 +114,7 @@ if __name__ == '__main__':
 					obj, obj_inst = (g_info['object_id'], g_info['object_inst'])
 					res, res_inst = (g_info['resource_id'], g_info['resource_inst'])
 					resource = device.getObject(obj, obj_inst).getResource(res, res_inst)
-					generators.append(RandomGenerator(periodicity, min_value, max_value, resource, DEBUG))
+					#generators.append(RandomGenerator(periodicity, min_value, max_value, resource, DEBUG))
 
 				if g_info['type'] == 'raw':
 					periodicity = g_info['periodicity']
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 					cvt_celsius = g_info['args']['convert_to_celsius'] if 'convert_to_celsius' in g_info['args'] else False
 					skiplines = g_info['args']['skiplines'] if 'skiplines' in g_info['args'] else 0
 					csv = False
-					generators.append(RawGenerator(file, column, periodicity, resource, csv, cvt_celsius, skiplines, DEBUG))
+					#generators.append(RawGenerator(file, column, periodicity, resource, csv, cvt_celsius, skiplines, DEBUG))
 
 				if g_info['type'] == 'csv':
 					periodicity = g_info['periodicity']
@@ -142,14 +142,14 @@ if __name__ == '__main__':
 					cvt_celsius = g_info['args']['convert_to_celsius'] if 'convert_to_celsius' in g_info['args'] else False
 					skiplines = g_info['args']['skiplines'] if 'skiplines' in g_info['args'] else 0
 					csv = True
-					generators.append(RawGenerator(file, column, periodicity, resource, csv, cvt_celsius, skiplines, DEBUG))
+					#generators.append(RawGenerator(file, column, periodicity, resource, csv, cvt_celsius, skiplines, DEBUG))
 
 				if g_info['type'] == 'mda':
 					obj, obj_inst = (g_info['object_id'], g_info['object_inst'])
 					res, res_inst = (g_info['resource_id'], g_info['resource_inst'])
 					resource = device.getObject(obj, obj_inst).getResource(res, res_inst)
 					file = g_info['args']['file']
-					generators.append(MDAGenerator(file, resource, DEBUG))
+					#generators.append(MDAGenerator(file, resource, DEBUG))
 
 		if ENABLE_SIMULATOR and 'web_info' in info:
 			for w_info in info['web_info']:

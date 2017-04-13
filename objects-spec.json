@@ -645,7 +645,7 @@
       {
         "id": 5500,
         "name": "Digital Input State",
-        "operations": "R",
+        "operations": "RW",
         "instancetype": "single",
         "mandatory": true,
         "type": "boolean",

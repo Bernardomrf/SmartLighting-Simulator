@@ -161,7 +161,9 @@ class Device(Thread):
 		self.connected = True
 		client.subscribe(self.devices_topic, 1)
 		client.subscribe(self.main_topic, 1)
-		self._client.publish(self.config_topic, payload=json.dumps(self.getDescription()), qos=self._qos)
+		print('Topic: ' + self.config_topic)
+		print('Message: ' + json.dumps(self.getDescription()))
+		#self._client.publish(self.config_topic, payload=json.dumps(self.getDescription()), qos=self._qos)
 
 	def _on_message(self, client, userdata, msg):
 		topic = msg.topic
@@ -212,7 +214,9 @@ class Device(Thread):
 
 				elif op == 'report_device_info':
 					if 'publish_on' in payload:
-						self._client.publish(payload['publish_on'], payload=json.dumps(self.getDescription()), qos=self._qos)
+						print('Topic: ' + payload['publish_on'])
+						print('Message: ' + json.dumps(self.getDescription()))
+						#self._client.publish(payload['publish_on'], payload=json.dumps(self.getDescription()), qos=self._qos)
 
 				elif op == 'unsubscribe_all':
 					for topic in self._subscribed_topics:
@@ -297,7 +301,7 @@ class Device(Thread):
 			'value': value
 		}
 		for topic in self._publish_topics:
-			self._client.publish(topic+'/'+'/'.join([str(obj_id),str(obj_inst),str(r_id),str(r_inst)]), payload=json.dumps(message), qos=self._qos)
+			#self._client.publish(topic+'/'+'/'.join([str(obj_id),str(obj_inst),str(r_id),str(r_inst)]), payload=json.dumps(message), qos=self._qos)
 			if self._debug: print('%-58s ## Sending %s to %s' % (
 				self.device_id, json.dumps(message), topic))
 

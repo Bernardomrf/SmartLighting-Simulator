@@ -69,5 +69,5 @@ def subscribe():
 
 if __name__ == '__main__':
     app.debug = True
-    server = WSGIServer(('0.0.0.0', 5000), app)
+    server = WSGIServer(('0.0.0.0', 8080), app)
     server.serve_forever()

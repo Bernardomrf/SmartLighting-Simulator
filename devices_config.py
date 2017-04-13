@@ -24,7 +24,7 @@ PASSWORD = None
 
 # WebSimulator # TO BE REMOVED
 ENABLE_SIMULATOR = True
-WEB_ADDRESS = 'http://localhost:5000'
+WEB_ADDRESS = 'http://localhost:8080'
 
 
 DEVICES_CONFIG = dict()
@@ -152,19 +152,9 @@ for i in range(1,165):
 		'objects': [
 			{
 				'object_id': 3302,              # Motion Sensor
-				'object_inst': 0
-			},
-		],
-		'generators': [
-			{
-				'object_id': 3302,
 				'object_inst': 0,
 				'resource_id': 5500,
-				'resource_inst': 0,
-				'periodicity': period,
-				'min': 0,
-				'max': 1,
-				'type': 'random'
+				'resource_inst': 0
 			},
 		],
 		'web_info': [

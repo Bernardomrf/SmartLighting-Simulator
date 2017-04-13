@@ -18,8 +18,8 @@ class MQTTCommonClient(Singleton):
 		self.mqtt_client_id = str(uuid.uuid4())
 		self.connected = False
 		self.lock = threading.Lock()
-		
-		self._client = mqtt.Client(client_id=self.mqtt_client_id, 
+
+		self._client = mqtt.Client(client_id=self.mqtt_client_id,
 								clean_session=kwargs['clean_session'],
 								protocol=kwargs['protocol'])
 		if kwargs['username']:
@@ -68,7 +68,7 @@ class MQTTCommonClient(Singleton):
 
 	def publish(self, client, topic, payload, qos, retain):
 		with self.lock:
-			self._client.publish(topic, payload, qos, retain)
+			#self._client.publish(topic, payload, qos, retain)
 			time.sleep(0.001)		# WITHOUT THIS IT WONT PUBLISH WHEN ON MULTIPLE PUBLISHES
 
 	def subscribe(self, client, topic, qos):
@@ -120,7 +120,7 @@ class MQTTVirtualClient(object):
 		self.password = password
 
 	def connect(self, host='localhost', port=1883, keepalive=60, bind_address=""):
-		self._common_client = MQTTCommonClient(host=host, 
+		self._common_client = MQTTCommonClient(host=host,
 											port=port,
 											keepalive=keepalive,
 											bind_address=bind_address,
@@ -141,7 +141,8 @@ class MQTTVirtualClient(object):
 
 	def publish(self, topic, payload=None, qos=0, retain=False):
 		if self._common_client:
-			self._common_client.publish(self, topic, payload, qos, retain)
+			pass
+			#self._common_client.publish(self, topic, payload, qos, retain)
 
 	def loop(self, timeout=1.0):
 		self.event.wait(timeout)
