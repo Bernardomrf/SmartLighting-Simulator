@@ -105,7 +105,7 @@ class Device(Thread):
 	def __init__(self, device_id, \
 					objs_def, devices_topic, config_topic, \
 					mqtt_tenant, \
-					host='127.0.0.1', \
+					host='sonata4.local', \
 					port=1883, \
 					username=None, \
 					password=None, \

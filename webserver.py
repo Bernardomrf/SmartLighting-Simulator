@@ -41,7 +41,9 @@ def debug():
 
 @app.route('/event', methods=['POST'])
 def publish():
+
     data = request.get_json(force=True)
+    print(data)
     def notify():
         msg = json.dumps(data)
         for sub in subscriptions[:]:

@@ -29,7 +29,7 @@ WEB_ADDRESS = 'http://localhost:8080'
 
 DEVICES_CONFIG = dict()
 
-for i in range(1,46):
+'''for i in range(1,46):
 	DEVICES_CONFIG['ac%d'%i] = {
 		'objects': [
 			{
@@ -46,7 +46,8 @@ for i in range(1,46):
 			}
 		],
 	}
-
+'''
+'''
 for i in range(1,50):
 	DEVICES_CONFIG['tmp%d'%i] = {
 		'objects': [
@@ -145,9 +146,7 @@ for i in range(1,157):
 
 import random
 for i in range(1,165):
-	period = random.randint(2,10)
-	if i == 123:
-		period = 1
+
 	DEVICES_CONFIG['motion%d'%i] = {
 		'objects': [
 			{
@@ -270,7 +269,7 @@ for i in range(1,10):
 			},
 		],
 	}
-
+'''
 for i in range(1,77):
 	DEVICES_CONFIG['light_c%d'%i] = {
 		'objects': [

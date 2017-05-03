@@ -119,7 +119,7 @@ class MQTTVirtualClient(object):
 		self.username = username
 		self.password = password
 
-	def connect(self, host='localhost', port=1883, keepalive=60, bind_address=""):
+	def connect(self, host='sonata4.local', port=1883, keepalive=60, bind_address=""):
 		self._common_client = MQTTCommonClient(host=host,
 											port=port,
 											keepalive=keepalive,
